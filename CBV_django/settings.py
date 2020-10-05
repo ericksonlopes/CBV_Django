@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     # Cada aplicação é uma CBV
     'view',
     'templateview',
-    'redirectview',
-    'detailview'
+    'detailview',
+    'listview',
 
 ]
 

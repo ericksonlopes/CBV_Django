@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    {% for person in object_list %}
+        <ul>
+            <li>{{ person.nome }}</li>
+            <li>{{ person.sobrenome }}</li>
+        </ul>
+    {% empty %}
+        <h1>Nenhum item encontrado</h1>
+    {% endfor %}
+
+    <p>Requisição: {{ now }}</p>
+
+</body>
+</html>
