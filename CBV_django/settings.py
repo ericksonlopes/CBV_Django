@@ -40,10 +40,17 @@ INSTALLED_APPS = [
     'database',  # Banco de dados
 
     # Cada aplicação é uma CBV
+
+    # Base view
     'view',
     'templateview',
+
+    # generic view
     'detailview',
     'listview',
+
+    # edit view
+    'formview',
 
 ]
 
