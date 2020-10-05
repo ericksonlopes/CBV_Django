@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
 
+from deleteview.views import DeleteViewCBV
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
@@ -14,5 +16,7 @@ urlpatterns = [
 
     path('formview/', include('formview.urls'), name='my-formview'),
 
-    path('createview/', include('createview.urls'), name='my-createview')
+    path('createview/', include('createview.urls'), name='my-createview'),
+
+    path('deleteview/<int:pk>/', DeleteViewCBV.as_view(), name='my-deleteview'),
 ]
