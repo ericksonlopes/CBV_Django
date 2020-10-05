@@ -12,5 +12,7 @@ urlpatterns = [
 
     path('listview/', include('listview.urls'), name='my-listview'),
 
-    path('formview/', include('formview.urls'), name='my-formview')
+    path('formview/', include('formview.urls'), name='my-formview'),
+
+    path('createview/', include('createview.urls'), name='my-createview')
 ]

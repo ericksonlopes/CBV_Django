@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'database',  # Banco de dados
+
+    # Banco de dados
+    'database',
 
     # Cada aplicação é uma CBV
 
@@ -51,6 +53,7 @@ INSTALLED_APPS = [
 
     # edit view
     'formview',
+    'createview',
 
 ]
 
