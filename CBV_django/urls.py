@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from deleteview.views import DeleteViewCBV
+from updateview.views import UpdateViewCBV
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -19,4 +20,6 @@ urlpatterns = [
     path('createview/', include('createview.urls'), name='my-createview'),
 
     path('deleteview/<int:pk>/', DeleteViewCBV.as_view(), name='my-deleteview'),
+
+    path('updateview/<int:pk>/', UpdateViewCBV.as_view(), name='my-updateview'),
 ]

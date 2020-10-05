@@ -54,6 +54,8 @@ INSTALLED_APPS = [
     # edit view
     'formview',
     'createview',
+    'deleteview',
+    'updateview',
 
 ]
 
