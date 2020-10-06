@@ -1,11 +1,11 @@
 from django.contrib import admin
 from django.urls import path, include
-from django.views.generic import ArchiveIndexView
+from django.views.generic import ArchiveIndexView, DateDetailView
 
 from database.models import Article
 from deleteview.views import DeleteViewCBV
 from generic_date_views.views import DetailViewCBVarticle, ArticleYearView, ArticleMonthView, \
-    ArticleWeekView, ArticleDayView
+    ArticleWeekView, ArticleDayView, ArticleToDay
 from updateview.views import UpdateViewCBV
 
 urlpatterns = [
@@ -54,5 +54,14 @@ urlpatterns = [
     path('archive_week/<int:year>/<int:month>/<int:week>/', ArticleWeekView.as_view(), name='article_week_numeric'),
 
     # exibir por dia ano/mes/dia
-    path('archive_day/<int:year>/<int:month>/<int:day>/', ArticleDayView.as_view(month_format='%m'), name='article_day_numeric'),
+    path('archive_day/<int:year>/<int:month>/<int:day>/', ArticleDayView.as_view(month_format='%m'),
+         name='article_day_numeric'),
+
+    # do dia atual
+    path('archive_day/', ArticleToDay.as_view(month_format='%m'), name='article_today'),
+
+    # detail do dia atual, procurando por pk
+    path('archive_pk/<int:year>/<int:month>/<int:day>/<int:pk>/',
+         DateDetailView.as_view(month_format='%m', model=Article, date_field="pub_date",
+                                template_name='generic_date_view/generic_day_pk.html'), name="archive_date_detail"),
 ]

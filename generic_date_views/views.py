@@ -1,4 +1,5 @@
-from django.views.generic import DetailView, YearArchiveView, MonthArchiveView, WeekArchiveView, DayArchiveView
+from django.views.generic import DetailView, YearArchiveView, MonthArchiveView, WeekArchiveView, DayArchiveView, \
+    TodayArchiveView
 
 from database.models import Article
 
@@ -47,3 +48,11 @@ class ArticleDayView(DayArchiveView):
     date_field = 'pub_date'
     allow_future = True
     template_name = 'generic_date_view/por_dia.html'
+
+
+# Do dia atual
+class ArticleToDay(TodayArchiveView):
+    queryset = Article.objects.all()
+    date_field = "pub_date"
+    allow_future = True
+    template_name = 'generic_date_view/por_dia_atual.html'
