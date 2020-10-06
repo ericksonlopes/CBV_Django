@@ -4,7 +4,8 @@ from django.views.generic import ArchiveIndexView
 
 from database.models import Article
 from deleteview.views import DeleteViewCBV
-from generic_date_views.views import DetailViewCBVarticle
+from generic_date_views.views import DetailViewCBVarticle, ArticleYearView, ArticleMonthView, \
+    ArticleWeekView, ArticleDayView
 from updateview.views import UpdateViewCBV
 
 urlpatterns = [
@@ -38,10 +39,20 @@ urlpatterns = [
 
     # Objetos com uma data futura não são exibidos, a menos que você defina allow_futurecomo True.
 
-    # exibe os dados mais recentes (menos futuro)
+    # exibe os dados mais generic_date_view
     path('archiveindexbiew/', ArchiveIndexView.as_view(model=Article, date_field="pub_date",
-                                                       template_name='recentes/recentes.html'), name="article_archive"),
+                                                       template_name='generic_date_view/generic_date_view.html'),
+         name="article_archive"),
 
-    # Exibe todos os dados do ano (menos futuro)
+    # Exibe todos os dados do ano ano/
+    path('archiveyear/<int:year>/', ArticleYearView.as_view(), name='article_year'),
 
+    # exibir registros por ano e mes ano/mes
+    path('archive/<int:year>/<int:month>/', ArticleMonthView.as_view(month_format='%m'), name='article_Month_numeric'),
+
+    # exibir por semana ano/mes/semana
+    path('archive_week/<int:year>/<int:month>/<int:week>/', ArticleWeekView.as_view(), name='article_week_numeric'),
+
+    # exibir por dia ano/mes/dia
+    path('archive_day/<int:year>/<int:month>/<int:day>/', ArticleDayView.as_view(month_format='%m'), name='article_day_numeric'),
 ]
